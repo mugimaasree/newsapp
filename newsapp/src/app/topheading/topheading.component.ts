@@ -8,21 +8,15 @@ import { NewsapiService } from '../newsapi.service';
 })
 export class TopheadingComponent implements OnInit {
 
-  constructor(private newApiservice: NewsapiService) {}
+  constructor(private newApiservice:NewsapiService) {}
 
-  topheadingDisplay: any[] = [];
-  error: string | null = null; // Add error handling
+topheadingDisplay:any=[];
 
-  ngOnInit(): void {
-    this.newApiservice.topHeading().subscribe(
-      (result) => {
-        console.log(result);
-        this.topheadingDisplay = result.articles;
-      },
-      (err) => {
-        console.error(err);
-        this.error = 'Error fetching news data'; // Handle errors
-      }
-    );
-  }
+ngOnInit(): void {
+  this.newApiservice.topHeading().subscribe((result)=>{
+    console.log(result);
+    this.topheadingDisplay=result.articles;
+  })
+}
+
 }

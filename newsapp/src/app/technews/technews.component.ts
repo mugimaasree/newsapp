@@ -6,25 +6,16 @@ import { NewsapiService } from '../newsapi.service';
   templateUrl: './technews.component.html',
   styleUrls: ['./technews.component.css']
 })
-export class TechnewsComponent implements OnInit {
+export class TechnewsComponent implements OnInit{
 
-  constructor(private newApiservice: NewsapiService) {}
+  constructor(private newApiservice:NewsapiService) {}
 
-  technewsDisplay: any[] = [];
-  loading: boolean = true;
-  error: string | null = null;
+technewsDisplay:any=[];
 
-  ngOnInit(): void {
-    this.newApiservice.techNews().subscribe(
-      (result) => {
-        this.technewsDisplay = result.articles;
-        this.loading = false;
-      },
-      (err) => {
-        console.error(err);
-        this.error = 'Error fetching technology news';
-        this.loading = false;
-      }
-    );
-  }
+ngOnInit(): void {
+  this.newApiservice.techNews().subscribe((result)=>{
+    this.technewsDisplay =result.articles;
+  });
+}
+
 }
